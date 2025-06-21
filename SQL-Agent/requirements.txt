@@ -1,0 +1,15 @@
+# Core Agno framework
+agno
+
+# Streamlit for the web interface
+streamlit
+
+# Azure OpenAI integration
+openai
+
+# SQL database connectivity
+sqlalchemy
+
+# MySQL database adapter
+mysqlclient
+
