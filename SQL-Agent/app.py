@@ -45,8 +45,8 @@ query = st.text_input("Ask a question about your database/tables:")
 
 if query:
     with st.spinner("🔍 Thinking..."):
-
-        # For Streaming Response :        
+        # stream = True
+        
         # if stream:
         #     response_stream = agent_team.run(query, stream=True)
         #     response_text = ""
