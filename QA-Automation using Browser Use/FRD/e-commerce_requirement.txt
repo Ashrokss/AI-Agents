@@ -1,0 +1,164 @@
+## Functional Requirements Document: SauceDemo E-Commerce Web Application
+
+**For Automation Testing with Playwright QA Agent**
+**Version:** 1.0
+**Date:** 2025-06-20
+**App URL:** [https://www.saucedemo.com/v1/](https://www.saucedemo.com/v1/)
+**Author:** QA Automation Agent Integration
+**Status:** Automation Ready
+
+---
+
+### 1. User Authentication (Login Page)
+
+**FR1**: On visiting `https://www.saucedemo.com`, the system **shall display a login form** with:
+
+* Username input: `#user-name`
+* Password input: `#password`
+* Login button: `#login-button`
+
+**FR2**: When valid credentials are entered (`standard_user` / `secret_sauce`) and the login button is clicked, the system shall **redirect to** `/inventory.html`.
+
+**FR3**: If invalid credentials are entered (e.g., `invalid_user`), an **error message** with class `.error-message-container` shall be displayed.
+
+**FR4**: After successful login, the URL shall contain `/inventory.html` and the **product listing** should be visible.
+
+---
+
+### 2. Inventory Page (Product Listing)
+
+**FR5**: After login, the system shall **display all products** with:
+
+* Class: `.inventory_item`
+* Each item shall contain:
+
+  * Title: `.inventory_item_name`
+  * Price: `.inventory_item_price`
+  * Description: `.inventory_item_desc`
+  * "Add to Cart" button: `.btn_inventory`
+
+**FR6**: Clicking “Add to Cart” shall:
+
+* Change button text to “Remove”
+* Increase cart icon badge: `#shopping_cart_container .shopping_cart_badge`
+
+**FR7**: Product list can be sorted using the dropdown: `data-test="product_sort_container"`
+Options:
+
+* Name (A to Z)
+* Name (Z to A)
+* Price (low to high)
+* Price (high to low)
+
+---
+
+### 3. Product Detail Page
+
+**FR8**: Clicking on any product name shall redirect to `/inventory-item.html?id=product_id`.
+
+**FR9**: Product detail page shall display:
+
+* Product image: `.inventory_details_img`
+* Title: `.inventory_details_name`
+* Price: `.inventory_details_price`
+* Description: `.inventory_details_desc`
+* Add/Remove button: `.btn_inventory`
+
+**FR10**: Clicking “Back” button: `.inventory_details_back_button` shall return to `/inventory.html`.
+
+---
+
+### 4. Shopping Cart Page
+
+**FR11**: Clicking the cart icon (`#shopping_cart_container`) redirects to `/cart.html`.
+
+**FR12**: On the cart page:
+
+* All added products are listed
+* Each item shows name, quantity, and price
+* Each item has a “Remove” button
+
+**FR13**: “Continue Shopping” button (`data-test="continue-shopping"`) returns to `/inventory.html`.
+
+**FR14**: “Checkout” button (`data-test="checkout"`) proceeds to `/checkout-step-one.html`.
+
+---
+
+### 5. Checkout Process
+
+#### Step 1: Your Information
+
+**FR15**: Page URL: `/checkout-step-one.html`.
+Form fields:
+
+* First Name: `#first-name`
+* Last Name: `#last-name`
+* Postal Code: `#postal-code`
+* Continue button: `#continue`
+
+**FR16**: Submitting without filling all fields shows an error: `.error-message-container`
+
+**FR17**: On valid input, continue to `/checkout-step-two.html`.
+
+#### Step 2: Order Overview
+
+**FR18**: Page displays:
+
+* List of selected products
+* Subtotal, Tax, and Total: `.summary_subtotal_label`, `.summary_tax_label`, `.summary_total_label`
+
+**FR19**: “Finish” button (`#finish`) completes the order and goes to `/checkout-complete.html`.
+
+**FR20**: “Cancel” button (`#cancel`) returns to `/cart.html`.
+
+#### Step 3: Order Completion
+
+**FR21**: Confirmation page (`/checkout-complete.html`) displays:
+
+* Confirmation text: `.complete-header`
+* “Back Home” button (`#back-to-products`) returns to `/inventory.html`
+
+---
+
+### 6. Navigation & Header Functionality
+
+**FR22**: Header is consistent across logged-in pages, showing:
+
+* Burger menu button: `#react-burger-menu-btn`
+* Cart icon: `#shopping_cart_container`
+
+**FR23**: Clicking the burger menu shows options:
+
+* All Items (`#inventory_sidebar_link`)
+* About
+* Logout (`#logout_sidebar_link`)
+* Reset App State (`#reset_sidebar_link`)
+
+**FR24**: Clicking “Logout” returns to `/index.html` (login page).
+
+**FR25**: Clicking “Reset App State” shall:
+
+* Clear cart items
+* Reset filters and product order
+* Redirect to `/inventory.html`
+
+---
+
+### 7. User Types for Authentication Testing
+
+| Username                  | Expected Behavior                       |
+| ------------------------- | --------------------------------------- |
+| `standard_user`           | Full access to app                      |
+| `locked_out_user`         | Error message on login                  |
+| `problem_user`            | UI glitches (for visual regression)     |
+| `performance_glitch_user` | Slower page loads (performance testing) |
+
+---
+
+### 8. State & Session Management
+
+**FR26**: Cart state shall persist across navigation within a session.
+
+**FR27**: On logout or reset, cart state and sorting preferences should be cleared.
+
+

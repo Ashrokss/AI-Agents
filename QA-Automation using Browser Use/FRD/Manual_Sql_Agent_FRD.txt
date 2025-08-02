@@ -1,0 +1,137 @@
+## 1. Project Overview
+
+* Project Name: SQL-Agent
+* Description:
+  An AI-powered Streamlit web application that enables users to ask natural language questions about a MySQL database. It leverages:
+
+  * Azure OpenAI (via `agno` library)
+  * SQLTools for converting natural language to SQL
+  * A browser-based interface for displaying results
+
+---
+
+## 2. Objective
+
+* Provide a user-friendly interface for non-technical users to query MySQL databases using natural language.
+* Utilize large language models (LLMs) to generate SQL and display query results in a safe and readable format via a web UI.
+
+---
+
+## 3. Functional Requirements
+
+1. FR-001 – Configuration Loading
+
+   * Load sensitive data such as MySQL credentials, API keys, and endpoints using a secure `Config` class or `.env` file.
+
+2. FR-002 – MySQL Database Connection
+
+   * Establish a MySQL connection using a URL-compatible format through SQLTools.
+
+3. FR-003 – LLM Integration
+
+   * Use Azure OpenAI (e.g., GPT-4o-mini) for understanding user queries and generating corresponding SQL.
+
+4. FR-004 – Agent Initialization
+
+   * Initialize an `agno.Agent` with SQLTools and a custom prompt.
+   * Cache the agent using Streamlit’s `@st.cache_resource` for performance.
+
+5. FR-005 – Web UI Input
+
+   * Provide a text box for users to input natural language queries.
+
+6. FR-006 – Query Processing
+
+   * Pass the query to `agent.run(query)` to initiate LLM-based processing with SQLTools.
+
+7. FR-007 – SQL Execution
+
+   * Execute generated SQL queries against the MySQL database and retrieve results.
+
+8. FR-008 – Results Display
+
+   * Display the results in the browser UI.
+   * Optionally include debug data such as tools used or formatted tool calls.
+
+9. FR-009 – Styling Support
+
+   * Apply custom CSS styles for a polished, user-friendly interface.
+
+10. FR-010 – Expandable Debug Panels
+
+    * Enable collapsible panels to show/hide advanced debugging information.
+
+11. FR-011 – Optional Streaming Support
+
+    * (Currently commented out) Real-time streaming of agent responses if enabled.
+
+---
+
+## 4. Non-Functional Requirements
+
+1. NFR-001 – Performance
+
+   * Agent resource is cached using `@st.cache_resource` to minimize loading delays.
+
+2. NFR-002 – Security
+
+   * API keys and credentials must be securely managed and never hardcoded.
+
+3. NFR-003 – Maintainability
+
+   * Use modular code structure (`style.py`, `config.py`, etc.) for easy maintenance.
+
+4. NFR-004 – Scalability
+
+   * Currently supports only read (SELECT) operations.
+   * For scaling, restrict query complexity and output size as needed.
+
+5. NFR-005 – Usability
+
+   * A clean, styled UI ensures accessibility for users without technical background.
+
+---
+
+## 5. Assumptions & Constraints
+
+* Only SELECT queries are supported (no INSERT/UPDATE/DELETE).
+* Assumes a running MySQL instance on `localhost:3306`.
+* Configuration values must be loaded via the `Config` class or environment variables.
+* SQLTools must safely validate and execute the generated SQL.
+
+---
+
+## 6. User Roles
+
+1. End User
+
+   * Enters natural language questions.
+   * Views results and optional debug info.
+
+2. Developer
+
+   * Manages application configuration, deployment, and maintenance.
+
+---
+
+## 7. User Journey
+
+1. Launch Application
+
+   * User opens the Streamlit app in a browser.
+
+2. Ask a Question
+
+   * User types a question (e.g., "What are the top 5 customers by revenue?").
+
+3. Query Processing
+
+   * LLM interprets the query and maps it to SQL.
+   * SQLTools executes the SQL on the database.
+
+4. See Results
+
+   * Results are displayed in a clean format (markdown/table).
+   * Debug/log panels are optionally available for inspection.
+
+

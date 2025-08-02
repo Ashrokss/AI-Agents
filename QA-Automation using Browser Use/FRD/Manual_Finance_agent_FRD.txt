@@ -1,0 +1,111 @@
+# Functional Requirements Document (FRD)
+
+**Project Name**: Finance Agent
+**Description**:
+An AI-powered financial research and analysis application that uses multiple cooperating agents to provide users with real-time market data, stock analytics, and curated financial news in response to natural language queries.
+
+---
+
+## Purpose
+
+* Help users get fast, comprehensive insights into financial markets.
+* Provide both **quantitative data** (e.g., stock prices, analyst metrics) and **qualitative context** (e.g., breaking news, sentiment).
+* Empower users to make informed decisions without needing to query multiple platforms or APIs manually.
+
+---
+
+## Functional Requirements
+
+### General System Behavior
+
+* The application must accept natural language financial queries via a web interface.
+* It must assemble a team of specialized AI agents to process different aspects of the query.
+* The results must be displayed in a clear, user-friendly format with structured data and readable narratives.
+* The user interface must be interactive and respond with a loading spinner during processing.
+* All agents must use the GPT-4o-mini model hosted via Azure OpenAI.
+
+---
+
+### Agent Team Functionality
+
+#### Web Agent (Financial News Researcher)
+
+* Use the DuckDuckGo tool to perform real-time web searches for financial news.
+* Extract headlines, news summaries, source links, and publication timestamps.
+* Focus on major market-moving events, regulatory developments, earnings calls, and strategic changes.
+* Apply a structured response style:
+
+  * Use bullet points for news summaries.
+  * Highlight sentiment and industry implications.
+  * Include brief analysis of potential market impact.
+* Always cite sources with hyperlinks and show the date/time of the news.
+
+#### Finance Agent (Market Data Analyst)
+
+* Use YFinance tools to gather:
+
+  * Latest stock prices, trading volumes, and price ranges.
+  * Analyst recommendations and average target prices.
+  * Company information, including sector and fundamentals.
+* Present quantitative data in a structured tabular format.
+* Provide commentary on:
+
+  * Technical trends
+  * Sector comparisons
+  * Recent performance vs historical average
+
+#### Lead Editor Agent (Executive Report Generator)
+
+* Orchestrate and integrate findings from the Web and Finance agents.
+* Organize the report using a logical narrative flow:
+
+  * Headline and executive summary
+  * Market data overview
+  * News context and sentiment
+  * Key takeaways and final analysis
+* Ensure all content is properly sourced and readable.
+* Optionally include:
+
+  * “Market Sentiment” section
+  * “Risk Factors” and disclaimers
+* Automatically append the current date and sign off with the "Market Watch Team".
+
+---
+
+## User Interaction
+
+* Users input a financial query (e.g., `AAPL stock analysis` or `TSLA vs RIVN performance`).
+* Sidebar includes example prompts to guide usage.
+* Users can optionally enable “streaming” responses for real-time output.
+* Output is dynamically rendered using Markdown, progressively updated when streaming is enabled.
+
+---
+
+## Data Sources & Tools
+
+* **Yahoo Finance** (via `YFinanceTools`) for structured financial data.
+* **DuckDuckGo** (via `DuckDuckGoTools`) for current news headlines and summaries.
+* **Azure OpenAI** as the LLM backend for query understanding and response synthesis.
+
+---
+
+## Non-Functional Requirements
+
+* Use environment variables to securely load API credentials (no hardcoded keys).
+* All AI-generated responses must be transparent (with references) and styled for readability.
+* Debug mode and internal tool call visibility are enabled to assist in troubleshooting and audits.
+* Response generation should complete within 15–45 seconds for most queries.
+
+---
+
+## Assumptions & Constraints
+
+* The app requires a valid Azure OpenAI API key and endpoint set via environment variables.
+* Real-time data accuracy depends on external services (Yahoo Finance, DuckDuckGo).
+* No user authentication or session history is implemented.
+* The application assumes a single-user interaction model at a time (no multi-user or concurrent request management).
+
+---
+
+
+

@@ -1,0 +1,45 @@
+# Functional Requirements Document: RAG Chatbot for Oil & Gas Domain
+
+## 1. Purpose
+
+This Streamlit-based Retrieval-Augmented Generation (RAG) chatbot provides intelligent, context-aware answers for the oil and gas industry. It retrieves relevant information from uploaded domain documents and uses a large language model to generate human-readable responses.
+
+---
+
+## 2. Functional Overview
+
+- **Chat Interface**: Users can enter questions in natural language.
+- **Retrieval Engine**: System retrieves the most relevant chunks using semantic similarity.
+- **LLM Integration**: Retrieved chunks are passed to an LLM to generate a response.
+- **Streamlit UI**:   expander to show the relevant chunks found 
+
+---
+
+## 3. Functional Requirements
+
+### A. Chat Interaction
+- FR-1: Accept user questions via text input.
+- FR-2: Return LLM-generated answers based on relevant document content.
+
+### B. Query Processing
+- FR-3: Retrieve relevant content chunks using embeddings shown under Relevant context expander 
+- FR-4: Use the retrieved content to answer queries.
+- FR-5: Indicate clearly when no relevant content is found.
+
+### C. Error Handling
+- FR-6: Prevent submission of empty queries.
+- FR-7: Handle retrieval or generation failures gracefully.
+
+---
+
+## 4. Non-Functional Requirements
+- NFR-1: Average response time < 5 seconds.
+
+---
+## 5. Sample Use Cases
+| ID   | Description |
+|------|-------------|
+| UC-02 | For example user  queries “What are safety rules for rotary tools?” presses enter and get relevant results. |
+| UC-05 | User asks multiple questions, and receives different relevant answers. |
+---
+

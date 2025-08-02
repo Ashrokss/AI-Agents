@@ -1,0 +1,8 @@
+# Note : Rename this file to config.py
+class Config:
+    # #GPT model
+    AZURE_OPENAI_API_KEY= ''
+    AZURE_OPENAI_ENDPOINT= ''
+    AZURE_OPENAI_CHAT_DEPLOYMENT = ''# eg: gpt-4o-mini
+    AZURE_OPENAI_CHAT_DEPLOYMENT_MODEL= ''eg: gpt-4o-mini
+    AZURE_OPENAI_API_VERSION =  ''

@@ -1,0 +1,159 @@
+## Functional Requirements Document (FRD)
+
+
+
+**Application**: TodoMVC Web App
+
+**Platform**: Web (Single Page Application)
+
+
+
+---
+
+
+
+### 1. Purpose
+
+
+
+This application allows users to **manage a list of tasks** (to-dos) via a simple interface. Users can add new tasks, mark them as complete, filter the view (All/Active/Completed), and remove tasks or clear all completed ones. It's built to demonstrate typical front-end CRUD behavior and serves as a reference for testing UI interactions.
+
+
+
+---
+
+### 2. Functional Overview 
+
+| Feature                   | Description                                                                 |
+| ------------------------- | --------------------------------------------------------------------------  |
+| Add new todo              | Enter text and press Enter to add a new task to the list.                   |
+
+| Mark as completed         | Click the checkbox next to a task to mark it as completed.                  |
+
+| Edit todo title           | Double-click a task to edit its label and press Enter to save.              |
+
+| Delete a todo             | Click the "X" (delete button) next to a task to remove it.                  |
+
+| Toggle all tasks          | Click the top-left checkbox to mark all as complete/incomplete.             |
+
+| Filter view               | Switch between "All", "Active", and "Completed" using the footer tabs.      |
+
+| Clear completed tasks     | Click "Clear completed" to remove all completed tasks from the list.        |
+
+| Count active items        | Footer dynamically shows how many tasks are still pending.                  |
+
+| URL-based routing         | App updates the route (`#/all`, `#/active`, `#/completed`) based on filter. |
+
+| Due date support          | User can assign an optional due date to each task.                  |
+
+| Task prioritization       | User can mark tasks as Low, Medium, or High priority.               |
+
+| Task completion history   | User can view a history/log of completed tasks.                     |
+
+| Undo delete               | User can undo the deletion of a task within 5 seconds.              |
+
+
+---
+
+### 3. Functional Requirements
+
+
+
+#### A. Task Management
+
+
+
+* **FR-1**: The user shall be able to add a new task by typing in the input field and pressing Enter.
+
+* **FR-2**: The application shall add the task to the top of the list.
+
+* **FR-3**: Each task shall have a checkbox that toggles its completion state.
+
+* **FR-4**: The user shall be able to double-click a task to edit its content and press Enter to save.
+
+* **FR-5**: The user shall be able to delete a task using the "X" icon.
+
+
+
+#### B. Bulk Actions
+
+
+
+* **FR-6**: The user shall be able to mark all tasks as complete/incomplete using the top-left checkbox.
+
+* **FR-7**: The user shall be able to clear all completed tasks using the "Clear completed" button.
+
+
+
+#### C. Filtering & Routing
+
+
+
+* **FR-8**: The user shall be able to filter tasks using three tabs: All, Active, Completed.
+
+* **FR-9**: The app shall update the URL route to reflect the current filter state (`#/all`, `#/active`, `#/completed`).
+
+* **FR-10**: The user shall see the correct subset of tasks based on the filter.
+
+
+
+#### D. UI Feedback
+
+
+
+* **FR-11**: The footer shall show the number of active (not completed) tasks.
+
+* **FR-12**: The "Clear completed" button shall only be visible when there is at least one completed task.
+
+#### E. Advanced Task Attributes
+
+* **FR-13**: The user shall be able to assign a **due date** to a task during creation or editing.
+* **FR-14**: The user shall be able to set a **priority level** (Low, Medium, High) for each task.
+* **FR-15**: The UI shall visually indicate overdue tasks (e.g., red highlight).
+
+#### F. Data Persistence
+
+* **FR-16**: The application shall **persist tasks** in local storage or browser database so that state is retained across page reloads.
+
+#### G. Undo & History
+
+* **FR-17**: The user shall be able to **undo a task deletion** within 5 seconds of deletion.
+* **FR-18**: The application shall maintain a **history log of completed tasks**, accessible via a dedicated "History" tab or section.
+
+#### H. Search & Filtering
+
+* **FR-19**: The user shall be able to **search tasks by keyword** in the task title using a search input box.
+
+#### I. UI & UX Enhancements
+
+* **FR-20**: The app shall be **responsive** and adjust correctly across mobile, tablet, and desktop screen sizes.
+* **FR-21**: The app shall show **tooltips** on buttons/icons for better accessibility.
+
+---
+
+### 5. Sample Use Cases
+
+| Use Case ID | Description                                                              |
+| ----------- | ------------------------------------------------------------------------ |
+| UC-01       | User adds three tasks, marks one as completed, and sees "2 items left" in the footer. |
+
+| UC-02       | User filters to "Active", only sees uncompleted tasks.                                |
+
+| UC-03       | User edits a task, presses Esc — change is discarded.                                 |
+
+| UC-04       | User deletes a task and it disappears from the list immediately.                      |
+
+| UC-05       | User marks all tasks as complete and clears completed tasks — the list becomes empty. |
+
+| UC-06       | User creates a task with a due date and high priority.                   |
+
+| UC-07       | User deletes a task and clicks "Undo" to recover it.                     |
+
+| UC-08       | User searches "meeting" and only sees tasks with that word in the title. |
+
+| UC-09       | User reloads the browser and still sees their previously added tasks.    |
+
+| UC-10       | User completes a task and sees it recorded in the "History" section.     |
+
+---
+

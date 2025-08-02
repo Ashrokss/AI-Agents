@@ -1,0 +1,10 @@
+streamlit 
+streamlit-option-menu
+pandas
+langchain-openai
+browser-use
+pydantic
+openai==1.69.0
+asyncio==3.4.3
+openai-agents==0.0.7
+mcp==1.6.0
