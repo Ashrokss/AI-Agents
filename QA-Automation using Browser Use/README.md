@@ -8,6 +8,11 @@ This is a Streamlit-based web application that leverages large language models a
 * Execute tests in a real browser using an intelligent **Browser Agent**.
 * Display test plans, test cases, and execution results in a clean UI.
 
+## Demo :
+https://github.com/user-attachments/assets/6280f147-9e8f-4dbb-b8cc-36edde6a2bdd
+
+
+
 ## Setup Guide :
 
 Step 1 : Browser Use requires Python 3.11 or higher.
@@ -119,3 +124,4 @@ fs_files/
 ### Demo file for Feedback generation:
 
 1. Navigate to the FRD folder and use the `crtic_todo_frd.txt`
+
