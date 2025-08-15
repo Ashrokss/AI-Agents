@@ -3,7 +3,11 @@
 Gemini Tutor is an advanced educational AI assistant powered by Google's Gemini models. It provides multimodal, interactive learning experiences tailored to different education levels, with support for real-time search grounding and professional UI styling.
 
 # Demo:
-<video controls src="Gemini Multimodal Tutor - Google Chrome 2025-08-15 10-33-01.mp4" title="Gemini-Tutor Demo"></video>
+
+
+https://github.com/user-attachments/assets/0ccc6d03-854a-4491-8269-d3ab60d528d0
+
+
 
 
 ## Project Structure
@@ -76,3 +80,4 @@ streamlit run app.py
 - Ensure your API key is valid and set in `.env`.
 - If you encounter missing packages, run `pip install -r requirements.txt` again.
 - For Streamlit errors, check the terminal output and logs.
+
