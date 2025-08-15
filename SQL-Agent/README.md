@@ -80,7 +80,7 @@ class Config:
 ### 4. 🚀 Run the App
 
 ```bash
-streamlit run main.py
+streamlit run app.py
 ```
 ---
 
